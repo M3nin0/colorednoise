@@ -4,6 +4,7 @@ from numpy import sqrt, newaxis
 from numpy.fft import irfft, rfftfreq
 from numpy.random import normal
 from numpy import sum as npsum
+from numpy.random import seed as sd
 
 
 def powerlaw_psd_gaussian(exponent, size, fmin=0, seed = None):
@@ -54,7 +55,7 @@ def powerlaw_psd_gaussian(exponent, size, fmin=0, seed = None):
     >>> y = cn.powerlaw_psd_gaussian(1, 5)
     """
     # more controll to reprodutibility (Even if the 'global' alternative exists)
-    np.random.seed(seed)
+    sd(seed)
     
     # Make sure size is a list so we can iterate it and assign to it.
     try:
