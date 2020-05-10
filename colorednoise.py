@@ -6,7 +6,7 @@ from numpy.random import normal
 from numpy import sum as npsum
 
 
-def powerlaw_psd_gaussian(exponent, size, fmin=0):
+def powerlaw_psd_gaussian(exponent, size, fmin=0, seed = None):
     """Gaussian (1/f)**beta noise.
 
     Based on the algorithm in:
@@ -53,6 +53,8 @@ def powerlaw_psd_gaussian(exponent, size, fmin=0):
     >>> import colorednoise as cn
     >>> y = cn.powerlaw_psd_gaussian(1, 5)
     """
+    # more controll to reprodutibility (Even if the 'global' alternative exists)
+    np.random.seed(seed)
     
     # Make sure size is a list so we can iterate it and assign to it.
     try:
